@@ -6,17 +6,17 @@ El objetivo es practicar y aplicar los conocimientos aprendidos sobre Normalizac
 
 ## Integrantes:
 
-> Sergio Alejandro Gonzalez Aguirre
+Sergio Alejandro Gonzalez Aguirre
 sergiogonzalez189779@correo.itm.edu.co
 https://github.com/SergioGonzalez1996
 
 
-> Manuel Ricardo Chaverra Restrepo
+Manuel Ricardo Chaverra Restrepo
 manuelchaverra187190@correo.itm.edu.co
 https://github.com/DrkManuel
 
 
-> Juan Pablo Gomez Monsalve
+Juan Pablo Gomez Monsalve
 juangomez189401@correo.itm.edu.co
 https://github.com/Estudiando
 
