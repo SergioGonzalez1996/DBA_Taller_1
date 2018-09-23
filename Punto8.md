@@ -1,4 +1,4 @@
-## Punto 8: Análisis de Artículos.  
+﻿## Punto 8: Análisis de Artículos.  
 
 Uno de los objetivos del taller es analizar algunos artículos en Internet creados con el fin de ayudar a las personas a entender como manejar mejor sus bases de datos. En este archivo usted podrá encontrar el análisis de cada uno de los integrantes del equipo.  
 
@@ -6,7 +6,7 @@ Uno de los objetivos del taller es analizar algunos artículos en Internet cread
 2.	https://blog.codinghorror.com/who-needs-stored-procedures-anyways/  
 3.	http://highscalability.com/blog/2015/3/4/10-reasons-to-consider-a-multi-model-database.html  
 
-El primer análisis fue por Sergio González, el segundo por Manuel Chaverra y el tercero por Juan Gómez. Los encontrará a continuación:  
+El primer análisis fue por Sergio González, el segundo por Manuel Chaverra y el tercero por Juan Gómez.  
 
 ## 1.	Maybe Normalizing Isn’t Normal
 
@@ -27,3 +27,17 @@ En realidad, por lo que nos deberíamos preocupar no es “por que tan escalable
 Muchas personas simplemente normalizan porque les han dicho que deben hacerlo, pero la realidad es que sólo se debería normalizar cuando los datos te lo indican.  
 
 Incluso, al final el Autor nos dice que: “Normaliza hasta que duela, desnormaliza hasta que funcione”.  
+
+## 2. Who Needs Stored Procedures, Anyways?
+
+¿Son necesarios los procedimientos almacenados (a partir de este momento se mencionarán como PA) en la base de datos? Esta es, en esencia, la pregunta que el autor nos plantea en su artículo.  
+
+En el artículo, el autor nos menciona, entre varias cosas, que típicamente los PA no pueden ser debuggeados desde el mismo IDE en donde estamos trabajando la interfaz de usuario, por lo que es necesario abrir nuestro administrador de base de datos y cargar los paquetes que conforman la base de datos para poder revisar que es lo que está causando problemas. Esto, visto desde el punto de vista del desarrollo, es poco productivo pues la transición entre diferentes IDEs y lenguajes hace que el proceso sea más lento. Sin mencionar que cuando estos problemas ocurren los PA no ofrecen la suficiente retroalimentación, por lo que, a menos que el PA esté enteramente codificado con los controles de excepciones precisos, obtendremos errores crípticos basados en la línea exacta en donde se encuentra el error.  
+
+Los PA tampoco permiten pasar objetos, por lo que podría llegar a suceder que requiramos enormes cantidades de parámetros para poder poblar una fila de la tabla. De este modo, si requerimos llenar una fila de la tabla con más de 20 campos utilizando PA, deberemos ingresar más de 20 parámetros y en caso de que uno de estos parámetros esté incorrecto, sea cual sea la razón, obtendremos un error genérico de “bad call”, lo que significa que no sabremos que parámetros están equivocados, por lo que se deberán revisar manualmente uno por uno para descubrir el error.  
+
+Los PA esconden la lógica del negocio, por lo que es imposible saber qué es lo que un PA está haciendo o qué tipo de valores me retornará; tampoco es posible ver el código fuente de estos (a menos que se cuente con el acceso apropiado) para poder corroborar si está haciendo lo que creemos que está haciendo.  
+
+Sin embargo, no todo es malo alrededor de los PA pues algunos autores afirman que estos ayudan a aumentar el rendimiento, seguridad y accesibilidad al soporte de las bases de datos.  
+
+Para los escenarios de uso del mundo actual, el autor considera a los PA tienen serias desventajas y muy pocos beneficios prácticos, por lo tanto, los PA pueden ser considerados como el “Assembly” de las bases de datos, por lo cual solo debería utilizarse para controlar las situaciones de rendimientos más críticas.  
