@@ -1,7 +1,11 @@
 TO-DO LIST
 
-1) Punto 1, 6, 7 y 9.
+1) Enviar revisión del Diagrama al profesor.
 
-2) Buscar la forma de realizar querys mediante la herramientas pues sería pesado hacerlo solo con código.
+2) Agregar las claves foraneas (constrainsts)
 
-3) Putear a JP alv por hp.
+3) Punto 6, 7 y 9.
+
+4) Decirle a JP que envie su parte.
+
+5) Putear a JP alv por hp x2
