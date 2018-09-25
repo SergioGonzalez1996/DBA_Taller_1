@@ -20,7 +20,7 @@ https://github.com/Estudiando
 
 ## Docente
 
-Andres Mastinez
+Andres Martinez
 
 ## Detalles
 
