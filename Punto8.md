@@ -44,4 +44,7 @@ Para los escenarios de uso del mundo actual, el autor considera a los PA tienen 
 
 ## 3. 10 Reasons To Consider A Multi-Model Database  
 
-A pesar de la existencia de tantas opciones de bases de datos diferentes en el mercado, todas se enfrentan a una gran cantidad de problemas dentro de su infraestructura. Es por eso que el autor nos plante la opción de la proliferación de bases de datos NoSQL y ser ajustados a un modelo particular
+A pesar de la existencia de tantas opciones de bases de datos diferentes en el mercado, todas se enfrentan a una gran cantidad de problemas dentro de su infraestructura. Es por eso que el autor nos plantea la opción de la proliferación de bases de datos NoSQL y ser ajustados a un modelo particular, que pueden proporcionar un back-end único que expone múltiples modelos de datos y así omitir la fragmentación y ofrecen un back-end coherente y bien entendido, para algunos beneficios como:
+
+# 1. Consolidación
+Es cuando deciden como modelar y almacenar datos. Es complicado ya que existen muchas variables, como por ejemplo lenguajes de consultas, modelo de datos, motor de almacenamiento. Pero una base de datos de modelos múltiples admite diferentes tipos de datos para diferentes casos de uso y los consolida en una plataforma de forma que se transforma en un lenguaje de consulta, modelo de datos y motor de almacenamiento mucho mas flexible
