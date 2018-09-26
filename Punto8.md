@@ -43,3 +43,5 @@ Sin embargo, no todo es malo alrededor de los PA pues algunos autores afirman qu
 Para los escenarios de uso del mundo actual, el autor considera a los PA tienen serias desventajas y muy pocos beneficios prácticos, por lo tanto, los PA pueden ser considerados como el “Assembly” de las bases de datos, por lo cual solo debería utilizarse para controlar las situaciones de rendimientos más críticas.
 
 ## 3. 10 Reasons To Consider A Multi-Model Database  
+
+A pesar de la existencia de tantas opciones de bases de datos diferentes en el mercado, todas se enfrentan a una gran cantidad de problemas dentro de su infraestructura. Es por eso que el autor nos plante la opción de la proliferación de bases de datos NoSQL y ser ajustados a un modelo particular
