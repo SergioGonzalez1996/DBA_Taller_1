@@ -40,4 +40,6 @@ Los PA esconden la lógica del negocio, por lo que es imposible saber qué es lo
 
 Sin embargo, no todo es malo alrededor de los PA pues algunos autores afirman que estos ayudan a aumentar el rendimiento, seguridad y accesibilidad al soporte de las bases de datos.  
 
-Para los escenarios de uso del mundo actual, el autor considera a los PA tienen serias desventajas y muy pocos beneficios prácticos, por lo tanto, los PA pueden ser considerados como el “Assembly” de las bases de datos, por lo cual solo debería utilizarse para controlar las situaciones de rendimientos más críticas.  
+Para los escenarios de uso del mundo actual, el autor considera a los PA tienen serias desventajas y muy pocos beneficios prácticos, por lo tanto, los PA pueden ser considerados como el “Assembly” de las bases de datos, por lo cual solo debería utilizarse para controlar las situaciones de rendimientos más críticas.
+
+## 3. 10 Reasons To Consider A Multi-Model Database  
