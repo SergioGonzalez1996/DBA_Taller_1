@@ -18,6 +18,7 @@ CREATE TABLE usuarios (
   CONSTRAINT usuarios_pk PRIMARY KEY (id)
 );
 
+
 CREATE TABLE codigos_promocionales (
     id INT,
     codigo VARCHAR(16) NOT NULL,
@@ -30,6 +31,7 @@ CREATE TABLE codigos_promocionales (
     CONSTRAINT codigos_promocionales_id PRIMARY KEY (id)
 );
 
+
 CREATE TABLE emails (
   id INT,
   email VARCHAR(64) NOT NULL,
@@ -38,6 +40,7 @@ CREATE TABLE emails (
   
   CONSTRAINT emails_pk PRIMARY KEY (id)
 );
+
 
 CREATE TABLE lugares (
     id INT,
@@ -64,7 +67,7 @@ CREATE TABLE metodos_pago (
 CREATE TABLE viajes (
   id INT,
   fecha DATE NOT NULL,
-  tarifa_dinamica CHAR NOT NULL CHECK (bool in (0,1)),
+  tarifa_dinamica CHAR NOT NULL, 
   
   hora_inicio DATE NOT NULL,
   origen VARCHAR(512) NOT NULL,
@@ -79,9 +82,20 @@ CREATE TABLE viajes (
   vehiculo_id INT NOT NULL,
   lugar_id INT NOT NULL,
   
-  CONSTRAINT viajes_pk PRIMARY KEY (id)
+  CONSTRAINT viajes_pk PRIMARY KEY (id),
+  CONSTRAINT chk_tarifa CHECK (tarifa_dinamica = 0 OR tarifa_dinamica = 1)
 );
 
+
+CREATE TABLE viaje_recorrido (
+  id INT,
+  latitud FLOAT NOT NULL,
+  longitud FLOAT NOT NULL,
+  
+  viaje_id INT NOT NULL,
+  
+  CONSTRAINT viaje_recorrido_pk PRIMARY KEY (id)
+);
 
 
 CREATE TABLE facturas (
@@ -98,6 +112,7 @@ CREATE TABLE facturas (
   
   CONSTRAINT facturas_pk PRIMARY KEY (id)
 );
+
 
 CREATE TABLE factura_detalles (
  id INT,
@@ -118,6 +133,7 @@ CREATE TABLE empresas (
   CONSTRAINT empresas_pk PRIMARY KEY (id)
 );
 
+
 CREATE TABLE usuario_empresa (
   id INT NOT NULL,
   usuario_id INT NOT NULL,
@@ -125,18 +141,6 @@ CREATE TABLE usuario_empresa (
   
   CONSTRAINT usuario_empresa_pk PRIMARY KEY (id)
 );
-
-
-CREATE TABLE viaje_recorrido (
-  id INT,
-  latitud FLOAT NOT NULL,
-  longitud FLOAT NOT NULL,
-  
-  viaje_id INT NOT NULL,
-  
-  CONSTRAINT viaje_recorrido_pk PRIMARY KEY (id)
-);
-
 
 
 CREATE TABLE vehiculos (
@@ -148,6 +152,7 @@ CREATE TABLE vehiculos (
   
   CONSTRAINT vehiculos_id PRIMARY KEY (id)
 );
+
 
 CREATE TABLE usuario_vehiculo (
  id INT,    
@@ -170,7 +175,6 @@ CREATE TABLE metodos_pago_conductores (
 );
 
 
-
 CREATE TABLE detalle_pago_conductores (
   id INT,
   fecha DATE NOT NULL,
@@ -184,3 +188,43 @@ CREATE TABLE detalle_pago_conductores (
 
   CONSTRAINT detalle_pago_conductores_pk PRIMARY KEY (id)
 );
+
+--
+---- Claves Foraneas
+--
+
+ALTER TABLE usuarios ADD CONSTRAINT fk_lugar_usuarios_id FOREIGN KEY (lugar_id) REFERENCES lugares(id);
+ALTER TABLE usuarios ADD CONSTRAINT fk_metodos_pago_usuarios_id FOREIGN KEY (metodos_pago_id) REFERENCES metodos_pago(id);
+
+ALTER TABLE codigos_promocionales ADD CONSTRAINT fk_usr_cod_promo_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+
+ALTER TABLE emails ADD CONSTRAINT fk_usuario_emails_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+
+ALTER TABLE metodos_pago ADD CONSTRAINT fk_usuario_metodos_pago_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+ALTER TABLE metodos_pago ADD CONSTRAINT fk_empresa_metodos_pago_id FOREIGN KEY (usuario_id) REFERENCES empresas(id);
+
+ALTER TABLE viajes ADD CONSTRAINT fk_usuario_viajes_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+ALTER TABLE viajes ADD CONSTRAINT fk_conductor_viajes_id FOREIGN KEY (conductor_id) REFERENCES usuarios(id);
+ALTER TABLE viajes ADD CONSTRAINT fk_vehiculo_viajes_id FOREIGN KEY (vehiculo_id) REFERENCES vehiculos(id);
+ALTER TABLE viajes ADD CONSTRAINT fk_lugar_viajes_id FOREIGN KEY (lugar_id) REFERENCES lugares(id);
+
+ALTER TABLE facturas ADD CONSTRAINT fk_viaje_facturas_id FOREIGN KEY (viaje_id) REFERENCES viajes(id);
+ALTER TABLE facturas ADD CONSTRAINT fk_metodo_pago_facturas_id FOREIGN KEY (metodo_pago_id) REFERENCES metodos_pago(id);
+ALTER TABLE facturas ADD CONSTRAINT fk_cod_promo_facturas_id FOREIGN KEY (codigo_promocional_id) REFERENCES codigos_promocionales(id);
+ALTER TABLE facturas ADD CONSTRAINT fk_usuario_compartido_id FOREIGN KEY (usuario_compartido_id) REFERENCES usuarios(id);
+ALTER TABLE facturas ADD CONSTRAINT fk_empresa_facturas_id FOREIGN KEY (empresa_id) REFERENCES empresas(id);
+
+ALTER TABLE factura_detalles ADD CONSTRAINT fk_factura_factura_detalles_id FOREIGN KEY (factura_id) REFERENCES facturas(id);
+
+ALTER TABLE usuario_empresa ADD CONSTRAINT fk_usuario_empresa_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+ALTER TABLE usuario_empresa ADD CONSTRAINT fk_empresa_usuario_id FOREIGN KEY (empresa_id) REFERENCES empresas(id);
+
+ALTER TABLE viaje_recorrido ADD CONSTRAINT fk_viaje_recorrido_viaje_id FOREIGN KEY (viaje_id) REFERENCES viajes(id);
+
+ALTER TABLE usuario_vehiculo ADD CONSTRAINT fk_usuario_vehiculo_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+ALTER TABLE usuario_vehiculo ADD CONSTRAINT fk_vehiculo_usuario_id FOREIGN KEY (vehiculo_id) REFERENCES vehiculos(id);
+
+ALTER TABLE metodos_pago_conductores ADD CONSTRAINT fk_usr_metodos_pago_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+
+ALTER TABLE detalle_pago_conductores ADD CONSTRAINT fk_usuario_detalle_pago_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
+ALTER TABLE detalle_pago_conductores ADD CONSTRAINT fk_metodos_pago_conductores_id FOREIGN KEY (metodos_pago_conductores_id) REFERENCES metodos_pago_conductores(id);

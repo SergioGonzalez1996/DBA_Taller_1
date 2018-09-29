@@ -20,10 +20,12 @@ ALTER SYSTEM SET undo_tablespace = UndoUber;
 
 CREATE ROLE DBArol; -- NOTA: El ROL DBA es un rol por defecto de la base de datos.
 GRANT CONNECT TO DBArol;
+
 CREATE USER DBAuser 
   IDENTIFIED BY dba 
   DEFAULT TABLESPACE Uber 
   QUOTA UNLIMITED ON Uber;
+  
 GRANT DBArol TO DBAuser;
 
 --
@@ -73,7 +75,7 @@ CREATE USER amartinez
   QUOTA 10M ON uber
   PROFILE clerk; 
 
-GRANT DBArol TO sergiogonzalez, manuelchaverra, juangomez, amartinez;
+GRANT CONNECT TO sergiogonzalez, manuelchaverra, juangomez, amartinez;
 
 -- b) Bloquear un usuario asociado con el perfil de clerk.
 ALTER USER amartinez ACCOUNT LOCK;
