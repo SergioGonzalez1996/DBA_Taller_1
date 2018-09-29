@@ -1,11 +1,11 @@
 TO-DO LIST
 
-1) Corregir pequeños problemas del punto 6 (Creación de tablas)
+1) Poblar las tablas con datos (Parte del punto 6).
 
-2) Hacer las secuencias y poblar las tablas con datos (Parte del punto 6).
+2) Backup RMAN del Punto 7  
 
-3) Punto 7 (Backup RMAN) y 9 (Vídeo).
+3) Video del Punto 9.
 
-4) Decirle a JP que finalice su parte del punto 8.
+4) Decirle a JP que finalice su parte del punto 8 ...
 
-5) Putear a JP alv por hp x3
+5) Putear a JP alv por hp x4
