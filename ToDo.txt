@@ -1,11 +1,11 @@
 TO-DO LIST
 
-1) Enviar revisión del Diagrama al profesor.
+1) Corregir pequeños problemas del punto 6 (Creación de tablas)
 
-2) Agregar las claves foraneas (constrainsts)
+2) Hacer las secuencias y poblar las tablas con datos (Parte del punto 6).
 
-3) Punto 6, 7 y 9.
+3) Punto 7 (Backup RMAN) y 9 (Vídeo).
 
-4) Decirle a JP que envie su parte.
+4) Decirle a JP que finalice su parte del punto 8.
 
-5) Putear a JP alv por hp x2
+5) Putear a JP alv por hp x3
