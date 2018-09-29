@@ -18,6 +18,7 @@ CREATE TABLE usuarios (
   CONSTRAINT usuarios_pk PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE usuarios_id_seq;
 
 CREATE TABLE codigos_promocionales (
     id INT,
@@ -31,6 +32,7 @@ CREATE TABLE codigos_promocionales (
     CONSTRAINT codigos_promocionales_id PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE cod_prom_id_seq;
 
 CREATE TABLE emails (
   id INT,
@@ -41,6 +43,7 @@ CREATE TABLE emails (
   CONSTRAINT emails_pk PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE emails_id_seq;
 
 CREATE TABLE lugares (
     id INT,
@@ -52,6 +55,7 @@ CREATE TABLE lugares (
     CONSTRAINT lugares_pk PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE lugares_id_seq;
 
 CREATE TABLE metodos_pago (
   id INT,
@@ -63,6 +67,7 @@ CREATE TABLE metodos_pago (
   CONSTRAINT metodos_pago_pk PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE metodos_pago_id_seq;
 
 CREATE TABLE viajes (
   id INT,
@@ -86,6 +91,7 @@ CREATE TABLE viajes (
   CONSTRAINT chk_tarifa CHECK (tarifa_dinamica = 0 OR tarifa_dinamica = 1)
 );
 
+CREATE SEQUENCE viajes_id_seq;
 
 CREATE TABLE viaje_recorrido (
   id INT,
@@ -97,6 +103,7 @@ CREATE TABLE viaje_recorrido (
   CONSTRAINT viaje_recorrido_pk PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE viaje_recor_id_seq;
 
 CREATE TABLE facturas (
   id INT,
@@ -113,6 +120,7 @@ CREATE TABLE facturas (
   CONSTRAINT facturas_pk PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE facturas_id_seq;
 
 CREATE TABLE factura_detalles (
  id INT,
@@ -124,6 +132,7 @@ CREATE TABLE factura_detalles (
  CONSTRAINT factura_detalles_pk PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE factu_deta_id_seq;
 
 CREATE TABLE empresas (
   id INT,
@@ -133,6 +142,7 @@ CREATE TABLE empresas (
   CONSTRAINT empresas_pk PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE empresas_id_seq;
 
 CREATE TABLE usuario_empresa (
   id INT NOT NULL,
@@ -142,6 +152,7 @@ CREATE TABLE usuario_empresa (
   CONSTRAINT usuario_empresa_pk PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE usu_empr_id_seq;
 
 CREATE TABLE vehiculos (
   id INT,
@@ -153,6 +164,7 @@ CREATE TABLE vehiculos (
   CONSTRAINT vehiculos_id PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE vehiculos_id_seq;
 
 CREATE TABLE usuario_vehiculo (
  id INT,    
@@ -162,6 +174,7 @@ CREATE TABLE usuario_vehiculo (
  CONSTRAINT usuario_vehiculo_id PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE usu_veh_id_seq;
 
 CREATE TABLE metodos_pago_conductores (
   id INT,
@@ -174,6 +187,7 @@ CREATE TABLE metodos_pago_conductores (
   CONSTRAINT metodos_pago_conductores_id PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE meto_pag_conduc_id_seq;
 
 CREATE TABLE detalle_pago_conductores (
   id INT,
@@ -188,6 +202,8 @@ CREATE TABLE detalle_pago_conductores (
 
   CONSTRAINT detalle_pago_conductores_pk PRIMARY KEY (id)
 );
+
+CREATE SEQUENCE det_pago_conduc_id_seq;
 
 --
 ---- Claves Foraneas

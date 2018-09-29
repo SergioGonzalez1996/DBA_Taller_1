@@ -18,15 +18,19 @@ ALTER SYSTEM SET undo_tablespace = UndoUber;
 ---- TERCER PUNTO - CREAR UN USUARIO DBA (JUNTO CON EL ROL DBA) Y ASIGNARLO AL TABLESPACE UBER, ESTE USUARIO TIENE ESPACIO ILIMITADO EN LA BASE DE DATOS (DEBE TENER PERMISO PARA CONECTAR).
 --
 
-CREATE ROLE DBArol; -- NOTA: El ROL DBA es un rol por defecto de la base de datos.
-GRANT CONNECT TO DBArol;
+--CREATE ROLE DBArol; -- NOTA: El ROL DBA es un rol por defecto de la base de datos.
+--GRANT CONNECT TO DBArol;
 
 CREATE USER DBAuser 
   IDENTIFIED BY dba 
   DEFAULT TABLESPACE Uber 
   QUOTA UNLIMITED ON Uber;
   
-GRANT DBArol TO DBAuser;
+--GRANT DBArol TO DBAuser;
+-- NOTA: Discutir con el equipo ¿Es necesario crear el rol DBArol? En el taller dice que se debe crear un usuario DBA (con rol DBA), pero dado que el rol DBA ya existe como uno por defecto de oracle,
+-- ¿No se estaría refiriendo a crear un usuario y asignarle este rol dba que ya existe?
+
+GRANT DBA to DBAuser;
 
 --
 ---- CUARTO PUNTO - CREAR 4 PERFILES.
