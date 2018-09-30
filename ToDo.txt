@@ -1,7 +1,7 @@
 TO-DO LIST
 
-1) Video del Punto 9.
+1) Grabación de Vídeo.
 
-2) Decirle a JP que finalice su parte del punto 8...
+2) Edición y renderización del vídeo en 1440p60fps
 
-3) Putear a JP alv por hp x5.
+3) Subir vídeo a YouTube.
