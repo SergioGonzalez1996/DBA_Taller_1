@@ -217,7 +217,6 @@ ALTER TABLE codigos_promocionales ADD CONSTRAINT fk_usr_cod_promo_id FOREIGN KEY
 ALTER TABLE emails ADD CONSTRAINT fk_usuario_emails_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
 
 ALTER TABLE metodos_pago ADD CONSTRAINT fk_usuario_metodos_pago_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
---ALTER TABLE metodos_pago ADD CONSTRAINT fk_empresa_metodos_pago_id FOREIGN KEY (usuario_id) REFERENCES empresas(id);
 
 ALTER TABLE viajes ADD CONSTRAINT fk_usuario_viajes_id FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
 ALTER TABLE viajes ADD CONSTRAINT fk_conductor_viajes_id FOREIGN KEY (conductor_id) REFERENCES usuarios(id);
