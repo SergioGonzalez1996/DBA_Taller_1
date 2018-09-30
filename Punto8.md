@@ -1,4 +1,4 @@
-﻿## Punto 8: Análisis de Artículos.  
+# Punto 8: Análisis de Artículos.  
 
 Uno de los objetivos del taller es analizar algunos artículos en Internet creados con el fin de ayudar a las personas a entender como manejar mejor sus bases de datos. En este archivo usted podrá encontrar el análisis de cada uno de los integrantes del equipo.  
 
@@ -46,5 +46,43 @@ Para los escenarios de uso del mundo actual, el autor considera a los PA tienen 
 
 A pesar de la existencia de tantas opciones de bases de datos diferentes en el mercado, todas se enfrentan a una gran cantidad de problemas dentro de su infraestructura. Es por eso que el autor nos plantea la opción de la proliferación de bases de datos NoSQL y ser ajustados a un modelo particular, que pueden proporcionar un back-end único que expone múltiples modelos de datos y así omitir la fragmentación y ofrecen un back-end coherente y bien entendido, para algunos beneficios como:
 
-# 1. Consolidación
+### * Consolidación
+
 Es cuando deciden como modelar y almacenar datos. Es complicado ya que existen muchas variables, como por ejemplo lenguajes de consultas, modelo de datos, motor de almacenamiento. Pero una base de datos de modelos múltiples admite diferentes tipos de datos para diferentes casos de uso y los consolida en una plataforma de forma que se transforma en un lenguaje de consulta, modelo de datos y motor de almacenamiento mucho mas flexible
+
+### * Escalado De Rendimiento
+
+Una aplicacion tiende a crecer con el tiempo, y la necesidad de rendimiento de la base de datos tambien aumenta. y los sistemas modelos multiples que desacoplan el lenguaje de consulta y el modelo de datos del almacen de datos permiten escalar independientemente, por lo tanto varias partes del back-end se pueden escalar con un mayor rendimiento.
+
+### * Complejidad Operacional
+
+El objetivo de la persistencia es utilizar el mejor componente, pero la simple integracion de esos sistemas es un desafio especialmente cuando se trata de mantener la consistencia de datos y la tolerancia a fallas, pero con el modelo multiples nos ofrece dividir esa complejidad solucionando problemas muchos mas complejos
+
+### * Flexibilidad
+
+Es incomodo meter muchos datos en un solo modelo de datos. el enfoque multimodelo implica mapear multiples modelos de datos y proporciona un mode. lado de datos flexible sin la complejidad de operar multiples almacenes de datos
+
+### * Confiabilidad
+
+La confiabilidad tambien es un problema cuando se ejecutan multiples bases de datos, la recuperacion de fallas de la maquina puede requerir horas y procesos muy pesados, el enfoque multimodelo ofrece una particion de las tareas coordinadas y aplicando menor tiempo
+
+### * Consistencia de los datos
+
+Este requisito puede ser dificil pero no imposible de lograr, sin embargo, un unico sistema de back-end que admite multiples modelos de datos basados en los requisitos de la aplicacion puede lograr el objetivo que reflejen un estado consistente.
+
+### * Tolerancia a fallas
+
+Integrar multiples sistemas que fueron diseñados para ejecutarse de forma independiente de modo que proporcionan tolerancia a fallas en todo el sistema en conjunto. entonces el subsistema tendra mucho tiempo y menos costoso.
+
+### * Costo 
+
+Al usar mas, se gasta mucho mas, con el modelo multimodelo se enfoca en fragmentar cada componente con un mantenimiento continuo, parches y correcciones de errores.  y con menos cosas que corregir menos costos tendra.
+
+### * Transacciones
+
+Un verdadero sistema multimodelo requiere transacciones para garantizar que los datos se almacenen, y casi todas las bases de datos NoSQL no ofrecen garantias transaccionales debido a sus diseños arquitectonicos. y garantiza que los datos sean coherentes en la base de datos
+
+### * Mejores Aplicaciones
+
+Intentar ejercutar diferentes bases de datos para alimentar una aplicacion puede ser una pesadilla pero al contrario usando bases de datos multimodelo. debido a que dirige el mercado de bases de datos transacciones compatibles con ACID, API de modelos multiples y motores de almacenamiento compartidos
+
