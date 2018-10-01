@@ -1,11 +1,3 @@
 TO-DO LIST
 
-1) Grabación de Vídeo.
-
-2) Edición y renderización del vídeo en 1440p60fps
-
-3) Subir vídeo a YouTube.
-
-4) En el repositorio insertar el Link del Video.
-
-5) Subir el Repositorio a C-Virtual.
+We're done !
