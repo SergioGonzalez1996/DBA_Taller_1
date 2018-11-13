@@ -1,0 +1,23 @@
+Grupo 11:
+
+CHAVERRA RESTREPO MANUEL RICARDO
+GÓMEZ MONSALVE JUAN PABLO
+GONZALEZ AGUIRRE SERGIO ALEJANDRO
+
+  1. Normalización (2.0): 2.0
+    - En la liquidación de los conductores no es posible saber las facturas que se liquidaron de forma individual, vamos a trabajar con esto en la segunda parte del taller. (No penalizable)
+    - Buena solución para el envío de correos de las facturas. Sin embargo para el próximo trabajo deberán modificar un poco esta parte.
+    - El modelo cumple con la solución a la problemática planteada.
+  2. Tablespaces (0.1): OK
+  3. DBA User (0.1): OK
+  4. Profiles (0.1): OK
+  5. Users (0.1): OK
+  6. Tables, data (0.5): OK
+  7. RMAN (0.1): OK
+  8. Articles (1.0): 1.0
+  9. Video (1.0): 0.8
+    - Evitar el uso de "Más sin embargo" http://hispanoteca.eu/Foro-preguntas/ARCHIVO-Foro/mas-m%C3%A1s-sin%20embargo-en%20cambio.htm
+    - En el video no explicaron los artículos
+    - La música en lo personal no me incomoda, pero si deben bajarle un poco más el volumen porque a veces se vuelve un elemento distractor para seguir el video.
+
+Nota: 2.0 + 0.1 + 0.1 + 0.1 + 0.1 + 0.5 + 0.1 + 1.0 + 0.8 = 4.8
