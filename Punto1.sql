@@ -79,7 +79,7 @@ CREATE TABLE viajes (
   hora_final DATE NOT NULL,
   destino VARCHAR(512) NOT NULL,
   distancia NUMBER(5,3) NOT NULL,
-  tiempo_viaje VARCHAR(16) NOT NULL,    -- HH:MM:SS -- 00:08:50
+  tiempo_viaje NUMBER(9,2) NOT NULL,    -- Minutos
   tipo_servicio VARCHAR(16) NOT NULL,   -- UberX o Black ?
   
   usuario_id INT NOT NULL,
