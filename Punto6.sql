@@ -1,7 +1,13 @@
+-->  Ejecutar después de  de los ALTER del Taller 2, Punto 4.
+-- Una vez ejecutado esos ALTER, proceder a Insertar conm el archivo NewInsertsPunto4 del Taller 2.
+
 --
 ---- Lugares disponibles
 -- 
 
+-- Estos datos han sido comentados puesto en el taller 2 no son utiles.
+
+/*
 insert into lugares (id, pais, ciudad, divisa) values (lugares_id_seq.NEXTVAL, 'Ukraine', 'Kivsharivka', 'UAH');
 insert into lugares (id, pais, ciudad, divisa) values (lugares_id_seq.NEXTVAL, 'Iran', 'M?m?n?yeh', 'IRR');
 insert into lugares (id, pais, ciudad, divisa) values (lugares_id_seq.NEXTVAL, 'China', 'Beiyang', 'CNY');
@@ -602,7 +608,7 @@ insert into lugares (id, pais, ciudad, divisa) values (lugares_id_seq.NEXTVAL, '
 insert into lugares (id, pais, ciudad, divisa) values (lugares_id_seq.NEXTVAL, 'China', 'Taiyangling', 'CNY');
 insert into lugares (id, pais, ciudad, divisa) values (lugares_id_seq.NEXTVAL, 'Guatemala', 'Pochuta', 'GTQ');
 insert into lugares (id, pais, ciudad, divisa) values (lugares_id_seq.NEXTVAL, 'China', 'Yantian', 'CNY');
-
+*/
 --
 ---- Conductores
 -- 
@@ -2767,16 +2773,16 @@ insert into usuario_vehiculo (id, usuario_id, vehiculo_id) values (usu_veh_id_se
 ---- Viajes
 -- 
 
-insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '11/01/2017', 0, '08/01/2018', '112 Southridge Pass', '08/01/2018', '21756 Leroy Crossing', 43, '1:01', 'Black', 101, 1, 1, 1);
-insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '08/02/2018', 0, '04/02/2018', '2 Sunnyside Way', '09/02/2018', '222 Butternut Alley', 51, '1:02', 'UberX', 102, 2, 2, 2);
-insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '05/03/2018', 1, '02/03/2018', '964 Stoughton Alley', '10/03/2017', '6468 North Circle', 7, '2:43', 'Black', 103, 3, 3, 3);
-insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '12/04/2017', 0, '07/04/2018', '5 Roxbury Avenue', '04/04/2018', '50892 Jana Lane', 39, '18:18', 'UberX', 104, 4, 4, 4);
-insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '05/05/2018', 0, '06/05/2018', '8 Artisan Pass', '06/05/2018', '18278 Dunning Trail', 75, '9:48', 'Black', 105, 5, 5, 5);
-insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '09/06/2018', 0, '01/06/2018', '3 Scoville Crossing', '08/06/2018', '2 Sherman Way', 38, '1:49', 'UberX', 106, 6, 6, 6);
-insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '03/07/2018', 1, '06/07/2018', '9447 Oak Valley Place', '10/07/2017', '3637 Westend Circle', 27, '19:50', 'UberX', 107, 7, 7, 7);
-insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '01/08/2018', 1, '08/08/2018', '198 Butternut Center', '07/08/2018', '73871 Lakewood Point', 83, '14:39', 'Black', 108, 8, 8, 8);
-insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '06/09/2018', 0, '02/09/2018', '4061 Dennis Lane', '04/09/2018', '4468 Springview Pass', 73, '7:01', 'Black', 109, 9, 9, 9);
-insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '05/10/2018', 1, '09/10/2017', '838 Luster Crossing', '07/10/2018', '459 Kenwood Trail', 59, '12:03', 'UberX', 110, 10, 10, 10);
+insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '11/01/2017', 0, '08/01/2018', '112 Southridge Pass', '08/01/2018', '21756 Leroy Crossing', 43, 11, 'Black', 101, 1, 1, 1);
+insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '08/02/2018', 0, '04/02/2018', '2 Sunnyside Way', '09/02/2018', '222 Butternut Alley', 51, 12, 'UberX', 102, 2, 2, 2);
+insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '05/03/2018', 1, '02/03/2018', '964 Stoughton Alley', '10/03/2017', '6468 North Circle', 7, 23, 'Black', 103, 3, 3, 3);
+insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '12/04/2017', 0, '07/04/2018', '5 Roxbury Avenue', '04/04/2018', '50892 Jana Lane', 39, 18, 'UberX', 104, 4, 4, 4);
+insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '05/05/2018', 0, '06/05/2018', '8 Artisan Pass', '06/05/2018', '18278 Dunning Trail', 75, 94, 'Black', 105, 5, 5, 5);
+insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '09/06/2018', 0, '01/06/2018', '3 Scoville Crossing', '08/06/2018', '2 Sherman Way', 38, 14, 'UberX', 106, 6, 6, 6);
+insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '03/07/2018', 1, '06/07/2018', '9447 Oak Valley Place', '10/07/2017', '3637 Westend Circle', 27, 195, 'UberX', 107, 7, 7, 7);
+insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '01/08/2018', 1, '08/08/2018', '198 Butternut Center', '07/08/2018', '73871 Lakewood Point', 83, 143, 'Black', 108, 8, 8, 8);
+insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '06/09/2018', 0, '02/09/2018', '4061 Dennis Lane', '04/09/2018', '4468 Springview Pass', 73, 70, 'Black', 109, 9, 9, 9);
+insert into viajes (id, fecha, tarifa_dinamica, hora_inicio, origen, hora_final, destino, distancia, tiempo_viaje, tipo_servicio, usuario_id, conductor_id, vehiculo_id, lugar_id) values (viajes_id_seq.NEXTVAL, '05/10/2018', 1, '09/10/2017', '838 Luster Crossing', '07/10/2018', '459 Kenwood Trail', 59, 12, 'UberX', 110, 10, 10, 10);
 
 --
 ---- Viajes Recorrido
