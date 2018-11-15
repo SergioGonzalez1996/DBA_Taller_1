@@ -12,7 +12,7 @@ CREATE OR REPLACE VIEW MEDIOS_PAGO_CLIENTES AS
     FROM metodos_pago INNER JOIN usuarios ON metodos_pago.usuario_id = usuarios.id
     LEFT JOIN empresas ON metodos_pago.empresa_id = empresas.id;
     
---SELECT * FROM MEDIOS_PAGO_CLIENTES;  -- Comentado para evitar spam al momento de la ejecucion en el video
+SELECT * FROM MEDIOS_PAGO_CLIENTES;  -- Comentado para evitar spam al momento de la ejecucion en el video
 
 --
 ---- Punto 2
@@ -34,21 +34,22 @@ CREATE OR REPLACE VIEW VIAJES_CLIENTES AS
     INNER JOIN lugares ON viajes.lugar_id = lugares.id
     ORDER BY fecha_viaje DESC;
     
---SELECT * FROM VIAJES_CLIENTES;  -- Comentado para evitar spam al momento de la ejecucion en el video
+SELECT * FROM VIAJES_CLIENTES;  -- Comentado para evitar spam al momento de la ejecucion en el video
 
 --
 ---- Punto 3
 --
 
-EXPLAIN PLAN FOR SELECT * FROM VIAJES_CLIENTES;
-    
+-- Obtener el plan de ejecucion actual para la tabla.
+EXPLAIN PLAN FOR SELECT * FROM VIAJES_CLIENTES;  
 SELECT PLAN_TABLE_OUTPUT FROM TABLE(DBMS_XPLAN.DISPLAY());
 
---CREATE UNIQUE INDEX viajes_index ON viajes(id);
---CREATE UNIQUE INDEX facturas_index ON facturas(id);
---CREATE UNIQUE INDEX usuarios_index ON usuarios(id);
---CREATE UNIQUE INDEX vehiculos_index ON vehiculos(id);
---CREATE UNIQUE INDEX lugares_index ON lugares(id);
+-- Debido a que todos los datos de nuestra vista se estan consultando por CLAVE PRIMARIA no podemos crear indices.
+-- Es por ello, que usaremos un WHERE cualquiera para la vista y a la columna de ese WHERE pondremos un indice.
+-- Posteriormente, haremos un nuevo plan de ejecucion para la vista, con el WHERE nuevo.
+-- Se podra consultar los resultados en las imagenes Punto3_ExplainPlan_... de la carpeta Assignment 2.
+
+-- TO DO
 
 
 --
@@ -69,25 +70,31 @@ ALTER TABLE lugares
 CREATE OR REPLACE FUNCTION VALOR_DISTANCIA(distancia IN NUMBER, lugar IN VARCHAR) RETURN NUMBER AS
     valor NUMBER(9,2) := 0;
     valor_km NUMBER(9,2) := 0;
+    NO_VALID_DISTANCE EXCEPTION;
 BEGIN
-    IF distancia > 0 THEN
-        SELECT valor_kilometro INTO valor_km FROM lugares WHERE ciudad = lugar;
-        dbms_output.put_line('Valor por KM en la ciudad: $'||valor_km);
-        dbms_output.put_line('Kilometros recorridos: '||distancia);
-        valor := distancia * valor_km;
-        RETURN valor;
-    ELSE
-        dbms_output.put_line('Error: Los Kilometros ingresados son invalidos. Usa valores mayores a 0.');
-        RETURN valor;
-    END IF;    
+    IF distancia <= 0 THEN
+        RAISE NO_VALID_DISTANCE;
+    END IF;
+
+    SELECT valor_kilometro INTO valor_km FROM lugares WHERE ciudad = lugar;
+    dbms_output.put_line('Valor por KM en la ciudad: $'||valor_km);
+    dbms_output.put_line('Kilometros recorridos: '||distancia);
+    valor := distancia * valor_km;
+    RETURN valor;
     
     EXCEPTION 
-       WHEN NO_DATA_FOUND THEN 
-          dbms_output.put_line('No se encuentra esta ciudad.'); 
-          RETURN 0;
-       WHEN OTHERS THEN 
-          dbms_output.put_line('Error desconocido.'); 
-          RETURN 0;
+        WHEN NO_VALID_DISTANCE THEN
+            dbms_output.put_line('Error: Los Kilometros ingresados son invalidos. Usa valores mayores a 0.');
+            RETURN 0;
+        WHEN NO_DATA_FOUND THEN 
+            dbms_output.put_line('Error: No se encuentra esta ciudad.'); 
+            RETURN 0;
+        WHEN TOO_MANY_ROWS THEN
+            dbms_output.put_line('Error: La consulta arrojo demasiadas valores. Se esperaba solo 1.'); 
+            RETURN 0;
+        WHEN OTHERS THEN 
+            dbms_output.put_line('Error desconocido.'); 
+            RETURN 0;
           
     RETURN valor;
 END;
@@ -97,7 +104,7 @@ DECLARE
     distancia NUMBER(7,2) := 20.68;
     ciudad VARCHAR(64) := 'Medellin';
 BEGIN 
-    dbms_output.put_line('Valor de la carrera: $'||VALOR_DISTANCIA(distancia, ciudad));
+    dbms_output.put_line('Valor de la carrera por su distancia: $'||VALOR_DISTANCIA(distancia, ciudad));
 END;
 
 --
@@ -107,26 +114,31 @@ END;
 CREATE OR REPLACE FUNCTION VALOR_TIEMPO(minutos IN NUMBER, lugar IN VARCHAR) RETURN NUMBER AS
     valor NUMBER(9,2) := 0;
     valor_min NUMBER(9,2) := 0;
+    NO_VALID_MINUTES EXCEPTION;
 BEGIN
-    IF minutos > 0 THEN
-        SELECT valor_minuto INTO valor_min FROM lugares WHERE ciudad = lugar;
-        IF valor_min > 0 THEN
-            dbms_output.put_line('Valor por Minuto en la ciudad: $'||valor_min);
-            dbms_output.put_line('Minutos de recorrido: '||minutos);
-            valor := minutos * valor_min;
-            RETURN valor;
-        END IF;
-    ELSE
-        dbms_output.put_line('Error: Los Minutos ingresados son invalidos. Usa valores mayores a 0.');
-    END IF;    
+    IF minutos <= 0 THEN
+        RAISE NO_VALID_MINUTES;
+    END IF;
     
-    EXCEPTION 
-       WHEN NO_DATA_FOUND THEN 
-          dbms_output.put_line('No se encuentra esta ciudad.'); 
-          RETURN 0;
-       WHEN OTHERS THEN 
-          dbms_output.put_line('Error desconocido.'); 
-          RETURN 0;
+    SELECT valor_minuto INTO valor_min FROM lugares WHERE ciudad = lugar;
+    dbms_output.put_line('Valor por Minuto en la ciudad: $'||valor_min);
+    dbms_output.put_line('Minutos de recorrido: '||minutos);
+    valor := minutos * valor_min;
+    RETURN valor;   
+    
+    EXCEPTION           
+        WHEN NO_VALID_MINUTES THEN
+            dbms_output.put_line('Error: Los Minutos ingresados son invalidos. Usa valores mayores a 0.');
+            RETURN 0;
+        WHEN NO_DATA_FOUND THEN 
+            dbms_output.put_line('Error: No se encuentra esta ciudad.'); 
+            RETURN 0;
+        WHEN TOO_MANY_ROWS THEN
+            dbms_output.put_line('Error: La consulta arrojo demasiadas valores. Se esperaba solo 1.'); 
+            RETURN 0;
+        WHEN OTHERS THEN 
+            dbms_output.put_line('Error desconocido.'); 
+            RETURN 0;
           
     RETURN valor;
 END;
@@ -136,7 +148,7 @@ DECLARE
     minutos NUMBER(7,2) := 28;
     ciudad VARCHAR(64) := 'Medellin';
 BEGIN 
-    dbms_output.put_line('Valor de la carrera: $'||VALOR_TIEMPO(minutos, ciudad));
+    dbms_output.put_line('Valor de la carrera por su duracion: $'||VALOR_TIEMPO(minutos, ciudad));
 END;
 
 --
@@ -158,14 +170,15 @@ CREATE OR REPLACE PROCEDURE CALCULAR_TARIFA (viaje IN NUMBER) AS
     valor_calculado_kilometro NUMBER(9,2);
     valor_calculado_minuto NUMBER(9,2);
     
-    -- Cursor
-    CURSOR detalle_cursor IS SELECT valor FROM factura_detalles WHERE factura_detalles.factura_id = factura;
+    -- Cursor.
+    ---- NOTA: Es diferente por que este trae todas las columnas. Fue consultado en la documentacion.
+    CURSOR detalle_cursor IS SELECT valor,concepto FROM factura_detalles WHERE factura_detalles.factura_id = factura;
     detalles_t  detalle_cursor%ROWTYPE;
     TYPE detalles_ntt IS TABLE OF detalles_t%TYPE;
     l_detalles  detalles_ntt;
     
 BEGIN
-    -- Primer SELECT para obtener detalles basicos del viaje y la factura.
+    -- Primer SELECT para obtener detalles basicos del viaje y la ID de la factura.
     SELECT viajes.distancia, viajes.tiempo_viaje,    lugares.ciudad, lugares.tarifa_base,   facturas.id, facturas.estado
     INTO distancia, tiempo,     ciudad, valor_base,     factura, estado
     FROM viajes INNER JOIN lugares ON viajes.lugar_id = lugares.id
@@ -183,11 +196,12 @@ BEGIN
     OPEN  detalle_cursor;
     FETCH detalle_cursor BULK COLLECT INTO l_detalles;
     CLOSE detalle_cursor;
+    dbms_output.put_line('Costos Extra del viaje:'); 
     FOR indx IN 1..l_detalles.COUNT LOOP
-         -- dbms_output.put_line(l_detalles(indx).valor); -- Mostrar los costos de manera individual
+         dbms_output.put_line(l_detalles(indx).concepto||': $'||l_detalles(indx).valor); -- Mostrar los costos de manera individual
          valor_detalles := valor_detalles + l_detalles(indx).valor;
     END LOOP;
-    dbms_output.put_line('Valor por conceptos extra: $'||valor_detalles); 
+    dbms_output.put_line('Valor total por conceptos extra: $'||valor_detalles); 
     
     -- Calculamos el valor total de viaje.
     total := valor_detalles + valor_calculado_kilometro + valor_calculado_minuto + valor_base;
@@ -195,7 +209,6 @@ BEGIN
     
     -- Actualizacion final
     IF estado <> 'Pagado' THEN
-        -- Parte del punto 7.A que no entiendo
         UPDATE facturas SET facturas.valor_total = '0' WHERE facturas.id = factura;
         dbms_output.put_line('Si el estado del viaje es diferente a REALIZADO, deberá insertar 0 en el valor de la tarifa. ??????'); 
         dbms_output.put_line('Imposible actualizar el valor total. El viaje aun no esta REALIZADO.'); 
@@ -222,9 +235,10 @@ END;
 
 -- Ejecucion del comando para probar.
 DECLARE
-    viaje INT := 11;
+    viaje INT := 1;
 BEGIN 
     CALCULAR_TARIFA (viaje);
 END;
 
-SELECT valor_total FROM facturas WHERE id = 11;
+-- Verificar que el valor si se haya actualizado
+SELECT valor_total FROM facturas WHERE id = 1;
