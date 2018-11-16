@@ -30,10 +30,10 @@ INSERT INTO viajes
 
 INSERT INTO facturas 
    (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) 
-    VALUES (facturas_id_seq.NEXTVAL, 'Pagado', '14/11/2018', 0, 11, 587, null, null, null);
+    VALUES (facturas_id_seq.NEXTVAL, 'Realizado', '14/11/2018', 0, 11, 587, null, null, null);
     
 
 INSERT INTO facturas 
    (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) 
-    VALUES (facturas_id_seq.NEXTVAL, 'Pagado', '14/11/2018', 0, 12, 587, null, null, null);
+    VALUES (facturas_id_seq.NEXTVAL, 'Realizado', '14/11/2018', 0, 12, 587, null, null, null);
     

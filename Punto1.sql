@@ -117,7 +117,8 @@ CREATE TABLE facturas (
   usuario_compartido_id INT,
   empresa_id INT,
   
-  CONSTRAINT facturas_pk PRIMARY KEY (id)
+  CONSTRAINT facturas_pk PRIMARY KEY (id),
+  CONSTRAINT check_estado  CHECK (estado IN ('Realizado', 'Cancelado', 'En marcha'))
 );
 
 CREATE SEQUENCE facturas_id_seq;

@@ -12,7 +12,7 @@ CREATE OR REPLACE VIEW MEDIOS_PAGO_CLIENTES AS
     FROM metodos_pago INNER JOIN usuarios ON metodos_pago.usuario_id = usuarios.id
     LEFT JOIN empresas ON metodos_pago.empresa_id = empresas.id;
     
-SELECT * FROM MEDIOS_PAGO_CLIENTES;  -- Comentado para evitar spam al momento de la ejecucion en el video
+SELECT * FROM MEDIOS_PAGO_CLIENTES;  -- Probar !
 
 --
 ---- Punto 2
@@ -34,7 +34,7 @@ CREATE OR REPLACE VIEW VIAJES_CLIENTES AS
     INNER JOIN lugares ON viajes.lugar_id = lugares.id
     ORDER BY fecha_viaje DESC;
     
-SELECT * FROM VIAJES_CLIENTES;  -- Comentado para evitar spam al momento de la ejecucion en el video
+SELECT * FROM VIAJES_CLIENTES;  -- Probar !
 
 --
 ---- Punto 3
@@ -161,7 +161,7 @@ CREATE OR REPLACE PROCEDURE CALCULAR_TARIFA (viaje IN NUMBER) AS
     tiempo NUMBER(9,2);
     ciudad VARCHAR(64);
     valor_base NUMBER(9,2);
-    factura INT;
+    factura INT := 0;
     estado VARCHAR(32);
     
     -- Internos del procedimiento   
@@ -196,7 +196,7 @@ BEGIN
     OPEN  detalle_cursor;
     FETCH detalle_cursor BULK COLLECT INTO l_detalles;
     CLOSE detalle_cursor;
-    dbms_output.put_line('Costos Extra del viaje:'); 
+    dbms_output.put_line('Conceptos y Costos extra del viaje:'); 
     FOR indx IN 1..l_detalles.COUNT LOOP
          dbms_output.put_line(l_detalles(indx).concepto||': $'||l_detalles(indx).valor); -- Mostrar los costos de manera individual
          valor_detalles := valor_detalles + l_detalles(indx).valor;
@@ -208,10 +208,11 @@ BEGIN
     dbms_output.put_line('TOTAL: $'||total||' para la factura ID '||factura); 
     
     -- Actualizacion final
-    IF estado <> 'Pagado' THEN
+    -- Nota sobre el estado: La tabla factura tiene el CONSTRAINT 'check_estado' que solo permite los siguientes valores:
+    -- 'Realizado', 'Cancelado', 'En marcha'
+    IF estado <> 'Realizado' THEN
         UPDATE facturas SET facturas.valor_total = '0' WHERE facturas.id = factura;
-        dbms_output.put_line('Si el estado del viaje es diferente a REALIZADO, deberá insertar 0 en el valor de la tarifa. ??????'); 
-        dbms_output.put_line('Imposible actualizar el valor total. El viaje aun no esta REALIZADO.'); 
+        dbms_output.put_line('Imposible actualizar el valor total. El viaje aun no esta REALIZADO. Estado actual: '||estado); 
     ELSE
         -- Poner el valor final a la factura
         UPDATE facturas SET facturas.valor_total = total WHERE facturas.id = factura;
@@ -222,20 +223,19 @@ BEGIN
     EXCEPTION 
        WHEN NO_DATA_FOUND THEN 
           dbms_output.put_line('No se encuentra este viaje.'); 
-          IF factura <> NULL THEN
+          IF factura > 0 THEN -- -- Verificar que si haya encontrado la ID de la factura
             UPDATE facturas SET facturas.valor_total = '0' WHERE facturas.id = factura;
           END IF;
        WHEN OTHERS THEN 
           dbms_output.put_line('Error desconocido.'); 
-          UPDATE facturas SET facturas.valor_total = '0' WHERE facturas.id = factura;
-          IF factura <> NULL THEN
+          IF factura > 0 THEN -- Verificar que si haya encontrado la ID de la factura
             UPDATE facturas SET facturas.valor_total = '0' WHERE facturas.id = factura;
           END IF;
 END;
 
 -- Ejecucion del comando para probar.
 DECLARE
-    viaje INT := 1;
+    viaje INT := 11;
 BEGIN 
     CALCULAR_TARIFA (viaje);
 END;

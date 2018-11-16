@@ -3293,16 +3293,16 @@ insert into viaje_recorrido (id, latitud, longitud, viaje_id) values (viaje_reco
 ---- Factoras
 -- 
 
-insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Pagado', '12/10/2017', 13800, 1, 587, null, null, null);
-insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Pagado', '6/09/2018', 28369, 2, 518, null, null, null);
-insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Pagado', '10/01/2017', 33575, 3, 575, null, null, null);
-insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Pagado', '1/02/2018', 18885, 4, 319, null, null, null);
-insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Pagado', '5/03/2018', 23482, 5, 212, null, null, null);
-insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Pagado', '12/04/2017', 14602, 6, 126, null, null, null);
-insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Pagado', '5/05/2018', 25206, 7, 153, null, null, null);
-insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Pagado', '9/06/2018', 9898, 8, 294, null, null, null);
-insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Pagado', '1/07/2018', 43044, 9, 393, null, null, null);
-insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Pagado', '5/08/2018', 18700, 10, 563, null, null, null);
+insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Realizado', '12/10/2017', 13800, 1, 587, null, null, null);
+insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Realizado', '6/09/2018', 28369, 2, 518, null, null, null);
+insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Realizado', '10/01/2017', 33575, 3, 575, null, null, null);
+insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Realizado', '1/02/2018', 18885, 4, 319, null, null, null);
+insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Realizado', '5/03/2018', 23482, 5, 212, null, null, null);
+insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Realizado', '12/04/2017', 14602, 6, 126, null, null, null);
+insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Realizado', '5/05/2018', 25206, 7, 153, null, null, null);
+insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Realizado', '9/06/2018', 9898, 8, 294, null, null, null);
+insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Realizado', '1/07/2018', 43044, 9, 393, null, null, null);
+insert into facturas (id, estado, fecha, valor_total, viaje_id, metodo_pago_id, codigo_promocional_id, usuario_compartido_id, empresa_id) values (facturas_id_seq.NEXTVAL, 'Realizado', '5/08/2018', 18700, 10, 563, null, null, null);
 
 --
 ---- Facturas Detalle
