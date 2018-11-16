@@ -25,7 +25,7 @@ CREATE OR REPLACE VIEW VIAJES_CLIENTES AS
     u.nombre AS nombre_cliente,
     facturas.valor_total,
     (CASE WHEN viajes.tarifa_dinamica > 0 THEN 'VERDADERO' ELSE 'FALSO' END) as tarifa_dinamica,
-    viajes.tipo_servicio,    -- Debido a nuestra estructura de la tabla, UberX o UberBlack esta escrito, literal, en la tabla.    
+    viajes.tipo_servicio,    -- Debido a nuestra estructura de la tabla, UberX o Black esta escrito, literal, en la tabla.    
     lugares.ciudad AS ciudad_viaje
     FROM viajes INNER JOIN facturas ON viajes.id = facturas.viaje_id
     INNER JOIN vehiculos ON viajes.vehiculo_id = vehiculos.id
@@ -49,7 +49,21 @@ SELECT PLAN_TABLE_OUTPUT FROM TABLE(DBMS_XPLAN.DISPLAY());
 -- Posteriormente, haremos un nuevo plan de ejecucion para la vista, con el WHERE nuevo.
 -- Se podra consultar los resultados en las imagenes Punto3_ExplainPlan_... de la carpeta Assignment 2.
 
--- TO DO
+-- Obtener el plan de ejecucion actual para la tabla con un WHERE a una columna.
+SELECT * FROM VIAJES_CLIENTES WHERE TIPO_SERVICIO = 'Black';
+EXPLAIN PLAN FOR SELECT * FROM VIAJES_CLIENTES WHERE TIPO_SERVICIO = 'Black';
+SELECT PLAN_TABLE_OUTPUT FROM TABLE(DBMS_XPLAN.DISPLAY());
+
+-- Ahora con el nuevo resultado para comparar, crearemos un indice en la columna TIPO_SERVICIO
+CREATE UNIQUE INDEX viajes_tipo_servicio_index ON viajes(id, tipo_servicio); 
+EXPLAIN PLAN FOR SELECT * FROM VIAJES_CLIENTES WHERE TIPO_SERVICIO = 'Black';
+SELECT PLAN_TABLE_OUTPUT FROM TABLE(DBMS_XPLAN.DISPLAY());
+
+-- Al ejecutar el plan de ejecucion y verificar el resultado podemos ver que no hubo mejora notable.
+-- Hemos dejado imagenes con el resultado en la carpeta del taller:
+    -- Punto3_ExplainPlan_Default: El primer plan de ejecucion, sin where.
+    -- Punto3_ExplainPlan_WithWhere: El mismo anterior, pero con un Where.
+    -- Punto3_ExplainPlan_WithWhereINDEX: Se creo el Index para la table viajes y se hizo el ExplainPlan.
 
 
 --
@@ -241,4 +255,4 @@ BEGIN
 END;
 
 -- Verificar que el valor si se haya actualizado
-SELECT valor_total FROM facturas WHERE id = 1;
+SELECT valor_total FROM facturas WHERE id = 11;
