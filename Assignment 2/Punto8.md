@@ -1,6 +1,6 @@
 ﻿# Punto 8: Análisis de Artículos.  
 
-Uno de los objetivos del taller es analizar algunos artículos en Internet creados con el fin de ayudar a las personas a entender como manejar mejor sus bases de datos. En este archivo usted podrá encontrar el análisis de cada uno de los integrantes del equipo.  
+Uno de los objetivos del taller es analizar algunos artículos en Internet, esta vez, enfocados a que cualquier persona sin estar en el medio pueda entender de qué se trata. 
 
 1.	https://eng.uber.com/mysql-migration/  
 2.	http://highscalability.com/blog/2017/12/11/netflix-what-happens-when-you-press-play.html
