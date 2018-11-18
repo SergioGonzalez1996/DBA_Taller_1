@@ -249,10 +249,10 @@ END;
 
 -- Ejecucion del comando para probar.
 DECLARE
-    viaje INT := 11;
+    viaje INT := 1;
 BEGIN 
     CALCULAR_TARIFA (viaje);
 END;
 
 -- Verificar que el valor si se haya actualizado
-SELECT valor_total FROM facturas WHERE id = 11;
+SELECT valor_total FROM facturas WHERE id = 1;
